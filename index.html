@@ -40,8 +40,14 @@ body {
 }
 
 @keyframes appear {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 h1, h2 {
@@ -89,12 +95,9 @@ button:active {
 }
 
 @keyframes bounce {
-  50% { transform: translateY(-15px) rotate(10deg); }
-}
-
-#s1 h2 {
-  font-family: 'Dancing Script', cursive;
-  font-size: 30px;
+  50% {
+    transform: translateY(-15px) rotate(10deg);
+  }
 }
 
 /* SCREEN 2 */
@@ -132,8 +135,12 @@ button:active {
 }
 
 @keyframes float {
-  0%,100% { transform: translateY(0) rotate(0); }
-  50% { transform: translateY(-35px) rotate(20deg); }
+  0%,100% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-35px) rotate(20deg);
+  }
 }
 
 /* SCREEN 4 - CAKE */
@@ -149,7 +156,9 @@ button:active {
 }
 
 @keyframes cake {
-  50% { transform: translateY(-10px) scale(1.04); }
+  50% {
+    transform: translateY(-10px) scale(1.04);
+  }
 }
 
 /* SCREEN 5 - BALLOONS */
@@ -182,12 +191,68 @@ button:active {
 }
 
 @keyframes balloon {
-  50% { transform: translateY(-15px); }
+  50% {
+    transform: translateY(-15px);
+  }
 }
 
 #balloonMessage {
   color: #ffb5cf;
   min-height: 50px;
+}
+
+/* BALLOON PHOTO POPUP */
+
+.photo-popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.94);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  text-align: center;
+}
+
+.photo-popup.show {
+  display: flex;
+  animation: appear .4s ease;
+}
+
+.photo-popup img {
+  width: 90%;
+  max-width: 350px;
+  max-height: 65vh;
+  object-fit: contain;
+  border: 5px solid white;
+  border-radius: 15px;
+  animation: photoZoom .6s ease;
+}
+
+.photo-popup p {
+  color: white;
+  font-family: 'Dancing Script', cursive;
+  font-size: 27px;
+  margin-top: 20px;
+}
+
+.photo-popup span {
+  color: #ffb5cf;
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+@keyframes photoZoom {
+  from {
+    transform: scale(.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 /* SCREEN 6 - MEMORIES */
@@ -223,6 +288,7 @@ button:active {
   height: 150px;
   object-fit: cover;
   background: #e8d7d8;
+  display: block;
 }
 
 .memory p {
@@ -271,12 +337,14 @@ button:active {
   margin: 25px;
 }
 
+/* CONFETTI */
+
 .confetti {
   position: fixed;
   top: -20px;
   pointer-events: none;
   animation: fall linear forwards;
-  z-index: 20;
+  z-index: 2000;
 }
 
 @keyframes fall {
@@ -287,78 +355,157 @@ button:active {
 }
 
 @media(max-width:380px) {
-  #s2 h1, #s8 h1 { font-size: 36px; }
-  .memories { gap: 10px; }
-  .memory img { height: 120px; }
+  #s2 h1, #s8 h1 {
+    font-size: 36px;
+  }
+
+  .memories {
+    gap: 10px;
+  }
+
+  .memory img {
+    height: 120px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- 1. OPENING -->
+<!-- SCREEN 1: OPENING -->
 
 <section class="screen active" id="s1">
+
   <h2>Your birthday surprise starts here</h2>
+
   <div class="flower">🌸</div>
+
   <p>Something special is waiting for you...</p>
-  <button onclick="go(2)">Open your surprise ❤️</button>
+
+  <button onclick="go(2)">
+    Open your surprise ❤️
+  </button>
+
 </section>
 
-<!-- 2. CELEBRATION -->
+
+<!-- SCREEN 2: CELEBRATION -->
 
 <section class="screen" id="s2">
-  <h1>It's your birthday!<br>
-  <span class="yay">Yay!!! 🎉</span></h1>
+
+  <h1>
+    It's your birthday!<br>
+    <span class="yay">Yay!!! 🎉</span>
+  </h1>
+
   <p>A whole day dedicated to you!</p>
-  <button onclick="go(3)">Let's celebrate ✨</button>
+
+  <button onclick="go(3)">
+    Let's celebrate ✨
+  </button>
+
 </section>
 
-<!-- 3. PERSONAL GREETING -->
+
+<!-- SCREEN 3: PERSONAL GREETING -->
 
 <section class="screen" id="s3">
+
   <span class="float" style="top:10%;left:10%">💗</span>
   <span class="float" style="top:25%;right:12%">✨</span>
   <span class="float" style="bottom:20%;left:15%">🌷</span>
 
   <p>Officially your day!</p>
-  <h1>Happy Birthday,<br><span id="name">Amulu</span>!</h1>
+
+  <h1>
+    Happy Birthday,<br>
+    <span id="name">Amulu</span>!
+  </h1>
+
   <p>Another year of being wonderfully you ❤️</p>
-  <button onclick="go(4)">Next surprise 💕</button>
+
+  <button onclick="go(4)">
+    Next surprise 💕
+  </button>
+
 </section>
 
-<!-- 4. CAKE -->
+
+<!-- SCREEN 4: CAKE -->
 
 <section class="screen" id="s4">
+
   <h2>Cake first. Obviously. 🎂</h2>
+
   <div class="cake">🎂</div>
+
   <p>Make a wish. This moment is yours!</p>
-  <button onclick="go(5)">Next surprise 🎈</button>
+
+  <button onclick="go(5)">
+    Next surprise 🎈
+  </button>
+
 </section>
 
-<!-- 5. BALLOONS -->
+
+<!-- SCREEN 5: BALLOONS -->
 
 <section class="screen" id="s5">
+
   <h2>Pop the balloons 🎈</h2>
-  <p class="small">Tap all three balloons to reveal your surprise!</p>
+
+  <p class="small">
+    Tap all three balloons to reveal your surprises!
+  </p>
 
   <div class="balloon-area">
+
     <span class="balloon" onclick="pop(this)">🎈</span>
+
     <span class="balloon" onclick="pop(this)">🎈</span>
+
     <span class="balloon" onclick="pop(this)">🎈</span>
+
   </div>
 
-  <h3 id="balloonMessage">3 surprises are waiting!</h3>
-  <button id="memoryButton" style="display:none" onclick="go(6)">
-    See our memories ❤️
+  <h3 id="balloonMessage">
+    3 surprises are waiting!
+  </h3>
+
+  <button
+    id="memoryButton"
+    style="display:none"
+    onclick="go(6)">
+    Continue to Memories ❤️
   </button>
+
 </section>
 
-<!-- 6. PHOTO MEMORIES -->
+
+<!-- BALLOON PHOTO POPUP -->
+
+<div class="photo-popup" id="photoPopup">
+
+  <img id="popupImage" src="" alt="Birthday surprise">
+
+  <p id="popupMessage"></p>
+
+  <span>
+    Your next surprise is waiting... ❤️
+  </span>
+
+</div>
+
+
+<!-- SCREEN 6: PHOTO MEMORIES -->
 
 <section class="screen" id="s6">
+
   <h2>Little memories, big smiles 📸</h2>
-  <p class="small">Some moments deserve to stay forever.</p>
+
+  <p class="small">
+    Some moments deserve to stay forever.
+  </p>
 
   <div class="memories">
 
@@ -384,62 +531,107 @@ button:active {
 
   </div>
 
-  <button onclick="go(7)">Keep going 💌</button>
+  <button onclick="go(7)">
+    Keep going 💌
+  </button>
+
 </section>
 
-<!-- 7. PERSONAL LETTER -->
+
+<!-- SCREEN 7: PERSONAL LETTER -->
 
 <section class="screen" id="s7">
+
   <h2>Before this ends...</h2>
+
   <br>
 
   <div class="letter">
-    <h2>Dear Amulu,</h2>
+
+    <h2 id="letterTitle">Dear Amulu,</h2>
 
     <p>
       I just want to wish you a beautiful birthday.
+
       May your days be filled with happiness, laughter
       and countless reasons to smile.
+
       <br><br>
+
       Keep being the wonderful person you are.
+
       I hope this year brings you everything
       your heart wishes for.
+
       <br><br>
+
       No matter how many birthdays pass,
       you will always be special.
+
       <br><br>
+
       With lots of love,<br>
       Your cousin ❤️
     </p>
+
   </div>
 
-  <button onclick="go(8)">One last surprise 💗</button>
+  <button onclick="go(8)">
+    One last surprise 💗
+  </button>
+
 </section>
 
-<!-- 8. FINAL SCREEN -->
+
+<!-- SCREEN 8: FINAL CELEBRATION -->
 
 <section class="screen" id="s8">
-  <h1>HAPPY<br>BIRTHDAY<br><span style="color:#ffd778">Amulu!</span></h1>
+
+  <h1>
+    HAPPY<br>
+    BIRTHDAY<br>
+    <span style="color:#ffd778" id="finalName">
+      Amulu!
+    </span>
+  </h1>
 
   <div class="teddy">🧸</div>
 
-  <p>May your life always be filled with love, laughter and magic!</p>
+  <p>
+    May your life always be filled with love,
+    laughter and magic!
+  </p>
 
-  <button onclick="celebrate()">Celebrate again! 🎉</button>
+  <button onclick="celebrate()">
+    Celebrate again! 🎉
+  </button>
+
 </section>
+
 
 <script>
 
-// CHANGE THE NAME HERE
+// ==================================
+// PERSONAL DETAILS
+// ==================================
+
 const cousinName = "Amulu";
 
 document.getElementById("name").textContent = cousinName;
-document.querySelector("#s3 h1").innerHTML =
-  `Happy Birthday,<br><span>${cousinName}</span>!`;
 
-document.querySelector("#s7 .letter h2").textContent = "Dear " + cousinName + ",";
+document.getElementById("letterTitle").textContent =
+  "Dear " + cousinName + ",";
+
+document.getElementById("finalName").textContent =
+  cousinName + "!";
+
+
+// ==================================
+// SCREEN NAVIGATION
+// ==================================
 
 function go(number) {
+
   document.querySelectorAll(".screen").forEach(screen => {
     screen.classList.remove("active");
   });
@@ -449,46 +641,126 @@ function go(number) {
   if(number === 8) {
     celebrate();
   }
+
 }
 
-// BALLOON POPPING
+
+// ==================================
+// BALLOON PHOTO DETAILS
+// CHANGE THE PHOTOS AND MESSAGES HERE
+// ==================================
+
+const balloonPhotos = [
+
+  {
+    image: "balloon1.jpg",
+    message: "A little memory just for you! ❤️"
+  },
+
+  {
+    image: "balloon2.jpg",
+    message: "Another beautiful moment! 🌸"
+  },
+
+  {
+    image: "balloon3.jpg",
+    message: "You are truly special! 💗"
+  }
+
+];
 
 let popped = 0;
+let popupTimer;
+
+
+// ==================================
+// BALLOON POP FUNCTION
+// EACH PHOTO SHOWS FOR 10 SECONDS
+// ==================================
 
 function pop(balloon) {
-  if(balloon.classList.contains("popped")) return;
+
+  if(balloon.classList.contains("popped")) {
+    return;
+  }
 
   balloon.classList.add("popped");
+
+  const photo = balloonPhotos[popped];
+
   popped++;
 
-  document.getElementById("balloonMessage").textContent =
-    popped === 3
-    ? "You popped all the balloons! 🎉"
-    : `${3-popped} more surprise(s) waiting!`;
+  const popup = document.getElementById("photoPopup");
 
-  if(popped === 3) {
-    document.getElementById("memoryButton").style.display = "inline-block";
-  }
+  const popupImage = document.getElementById("popupImage");
+
+  const popupMessage = document.getElementById("popupMessage");
+
+  popupImage.src = photo.image;
+
+  popupMessage.textContent = photo.message;
+
+  popup.classList.add("show");
+
+  clearTimeout(popupTimer);
+
+  popupTimer = setTimeout(() => {
+
+    popup.classList.remove("show");
+
+    popupImage.src = "";
+
+    if(popped === 3) {
+
+      document.getElementById("balloonMessage").textContent =
+        "You popped all the balloons! 🎉";
+
+      document.getElementById("memoryButton").style.display =
+        "inline-block";
+
+    } else {
+
+      document.getElementById("balloonMessage").textContent =
+        `${3-popped} more surprise(s) waiting!`;
+
+    }
+
+  }, 10000);
+
 }
 
-// CONFETTI
+
+// ==================================
+// CONFETTI CELEBRATION
+// ==================================
 
 function celebrate() {
+
   const symbols = ["🎉", "💗", "✨", "🌸", "🎊", "💕"];
 
   for(let i = 0; i < 65; i++) {
+
     let piece = document.createElement("div");
+
     piece.className = "confetti";
-    piece.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+
+    piece.textContent =
+      symbols[Math.floor(Math.random()*symbols.length)];
 
     piece.style.left = Math.random()*100 + "vw";
-    piece.style.animationDuration = (2 + Math.random()*3) + "s";
-    piece.style.fontSize = (12 + Math.random()*18) + "px";
+
+    piece.style.animationDuration =
+      (2 + Math.random()*3) + "s";
+
+    piece.style.fontSize =
+      (12 + Math.random()*18) + "px";
 
     document.body.appendChild(piece);
 
     setTimeout(() => piece.remove(), 5500);
+
   }
+
 }
 
 </script>
