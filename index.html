@@ -340,9 +340,18 @@ button:active {
   line-height: 1.4;
 }
 
-.teddy {
-  font-size: 110px;
-  margin: 25px;
+/* FINAL EDITABLE PHOTO */
+
+.final-photo {
+  width: 260px;
+  max-width: 85%;
+  height: 260px;
+  object-fit: cover;
+  border: 5px solid white;
+  border-radius: 18px;
+  margin: 25px auto;
+  display: block;
+  box-shadow: 0 8px 30px #0006;
 }
 
 /* CONFETTI */
@@ -379,6 +388,10 @@ button:active {
 
   .memory img {
     height: 120px;
+  }
+
+  .final-photo {
+    height: 220px;
   }
 }
 </style>
@@ -618,10 +631,15 @@ button:active {
   <h1>
     HAPPY<br>
     BIRTHDAY<br>
-    <span style="color:#ffd778" id="finalName">Amulu!</span>
+    <span style="color:#ffd778" id="finalName">Amulu</span>
   </h1>
 
-  <div class="teddy">🧸</div>
+  <!-- Change final.jpg to replace this photo -->
+  <img
+    src="final.jpg"
+    alt="Amulu's birthday photo"
+    class="final-photo"
+  >
 
   <p>
     May your life always be filled with love,
@@ -647,7 +665,7 @@ document.getElementById("letterTitle").textContent =
   "Dear " + cousinName + ",";
 
 document.getElementById("finalName").textContent =
-  cousinName + "!";
+  cousinName;
 
 
 // ==================================
@@ -753,9 +771,6 @@ function pop(balloon, photoIndex) {
     return;
   }
 
-  // Prevent another balloon being popped
-  // while the current photo is visible.
-
   if(document.getElementById("photoPopup").classList.contains("show")) {
     return;
   }
@@ -779,8 +794,6 @@ function pop(balloon, photoIndex) {
   popup.classList.add("show");
 
   clearTimeout(popupTimer);
-
-  // Show picture for 10 seconds
 
   popupTimer = setTimeout(() => {
 
