@@ -40,14 +40,8 @@ body {
 }
 
 @keyframes appear {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 h1, h2 {
@@ -95,9 +89,7 @@ button:active {
 }
 
 @keyframes bounce {
-  50% {
-    transform: translateY(-15px) rotate(10deg);
-  }
+  50% { transform: translateY(-15px) rotate(10deg); }
 }
 
 /* SCREEN 2 */
@@ -135,12 +127,8 @@ button:active {
 }
 
 @keyframes float {
-  0%,100% {
-    transform: translateY(0) rotate(0);
-  }
-  50% {
-    transform: translateY(-35px) rotate(20deg);
-  }
+  0%,100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-35px) rotate(20deg); }
 }
 
 /* SCREEN 4 - CAKE */
@@ -156,9 +144,7 @@ button:active {
 }
 
 @keyframes cake {
-  50% {
-    transform: translateY(-10px) scale(1.04);
-  }
+  50% { transform: translateY(-10px) scale(1.04); }
 }
 
 /* SCREEN 5 - BALLOONS */
@@ -168,18 +154,21 @@ button:active {
 }
 
 .balloon-area {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 22px;
-  margin: 45px 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px 12px;
+  width: 100%;
+  max-width: 420px;
+  margin: 35px auto;
 }
 
 .balloon {
-  font-size: 65px;
+  font-size: 52px;
   cursor: pointer;
+  display: inline-block;
   animation: balloon 2s infinite ease-in-out;
   transition: .3s;
+  user-select: none;
 }
 
 .balloon:active {
@@ -191,9 +180,7 @@ button:active {
 }
 
 @keyframes balloon {
-  50% {
-    transform: translateY(-15px);
-  }
+  50% { transform: translateY(-12px); }
 }
 
 #balloonMessage {
@@ -245,14 +232,8 @@ button:active {
 }
 
 @keyframes photoZoom {
-  from {
-    transform: scale(.5);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
+  from { transform: scale(.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
 
 /* SCREEN 6 - MEMORIES */
@@ -261,12 +242,22 @@ button:active {
   background: linear-gradient(150deg, #211726, #4a243c);
 }
 
+.memory-page {
+  display: none;
+  width: 100%;
+  max-width: 450px;
+}
+
+.memory-page.active {
+  display: block;
+  animation: appear .6s ease;
+}
+
 .memories {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 15px;
   width: 100%;
-  max-width: 450px;
   margin-top: 30px;
 }
 
@@ -295,6 +286,23 @@ button:active {
   font-family: 'Dancing Script', cursive;
   font-size: 17px;
   margin-top: 8px;
+}
+
+.page-indicator {
+  margin-top: 18px;
+  color: #ffb5cf;
+  font-size: 13px;
+}
+
+.page-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.page-buttons button {
+  margin-top: 20px;
 }
 
 /* SCREEN 7 - LETTER */
@@ -355,8 +363,14 @@ button:active {
 }
 
 @media(max-width:380px) {
-  #s2 h1, #s8 h1 {
-    font-size: 36px;
+  #s2 h1, #s8 h1 { font-size: 36px; }
+
+  .balloon-area {
+    gap: 15px 8px;
+  }
+
+  .balloon {
+    font-size: 43px;
   }
 
   .memories {
@@ -375,102 +389,71 @@ button:active {
 <!-- SCREEN 1: OPENING -->
 
 <section class="screen active" id="s1">
-
   <h2>Your birthday surprise starts here</h2>
-
   <div class="flower">🌸</div>
-
   <p>Something special is waiting for you...</p>
-
-  <button onclick="go(2)">
-    Open your surprise ❤️
-  </button>
-
+  <button onclick="go(2)">Open your surprise ❤️</button>
 </section>
 
 
 <!-- SCREEN 2: CELEBRATION -->
 
 <section class="screen" id="s2">
-
-  <h1>
-    It's your birthday!<br>
-    <span class="yay">Yay!!! 🎉</span>
-  </h1>
-
+  <h1>It's your birthday!<br>
+  <span class="yay">Yay!!! 🎉</span></h1>
   <p>A whole day dedicated to you!</p>
-
-  <button onclick="go(3)">
-    Let's celebrate ✨
-  </button>
-
+  <button onclick="go(3)">Let's celebrate ✨</button>
 </section>
 
 
 <!-- SCREEN 3: PERSONAL GREETING -->
 
 <section class="screen" id="s3">
-
   <span class="float" style="top:10%;left:10%">💗</span>
   <span class="float" style="top:25%;right:12%">✨</span>
   <span class="float" style="bottom:20%;left:15%">🌷</span>
 
   <p>Officially your day!</p>
-
-  <h1>
-    Happy Birthday,<br>
-    <span id="name">Amulu</span>!
-  </h1>
-
+  <h1>Happy Birthday,<br><span id="name">Amulu</span>!</h1>
   <p>Another year of being wonderfully you ❤️</p>
-
-  <button onclick="go(4)">
-    Next surprise 💕
-  </button>
-
+  <button onclick="go(4)">Next surprise 💕</button>
 </section>
 
 
 <!-- SCREEN 4: CAKE -->
 
 <section class="screen" id="s4">
-
   <h2>Cake first. Obviously. 🎂</h2>
-
   <div class="cake">🎂</div>
-
   <p>Make a wish. This moment is yours!</p>
-
-  <button onclick="go(5)">
-    Next surprise 🎈
-  </button>
-
+  <button onclick="go(5)">Next surprise 🎈</button>
 </section>
 
 
-<!-- SCREEN 5: BALLOONS -->
+<!-- SCREEN 5: EIGHT BALLOONS -->
 
 <section class="screen" id="s5">
 
   <h2>Pop the balloons 🎈</h2>
 
   <p class="small">
-    Tap all three balloons to reveal your surprises!
+    Tap all 8 balloons to reveal your surprises!
   </p>
 
   <div class="balloon-area">
 
-    <span class="balloon" onclick="pop(this)">🎈</span>
-
-    <span class="balloon" onclick="pop(this)">🎈</span>
-
-    <span class="balloon" onclick="pop(this)">🎈</span>
+    <span class="balloon" onclick="pop(this,0)">🎈</span>
+    <span class="balloon" onclick="pop(this,1)">🎈</span>
+    <span class="balloon" onclick="pop(this,2)">🎈</span>
+    <span class="balloon" onclick="pop(this,3)">🎈</span>
+    <span class="balloon" onclick="pop(this,4)">🎈</span>
+    <span class="balloon" onclick="pop(this,5)">🎈</span>
+    <span class="balloon" onclick="pop(this,6)">🎈</span>
+    <span class="balloon" onclick="pop(this,7)">🎈</span>
 
   </div>
 
-  <h3 id="balloonMessage">
-    3 surprises are waiting!
-  </h3>
+  <h3 id="balloonMessage">8 surprises are waiting!</h3>
 
   <button
     id="memoryButton"
@@ -485,55 +468,102 @@ button:active {
 <!-- BALLOON PHOTO POPUP -->
 
 <div class="photo-popup" id="photoPopup">
-
   <img id="popupImage" src="" alt="Birthday surprise">
-
   <p id="popupMessage"></p>
-
-  <span>
-    Your next surprise is waiting... ❤️
-  </span>
-
+  <span>Your next surprise is waiting... ❤️</span>
 </div>
 
 
-<!-- SCREEN 6: PHOTO MEMORIES -->
+<!-- SCREEN 6: MEMORIES - PAGE 1 -->
 
 <section class="screen" id="s6">
 
   <h2>Little memories, big smiles 📸</h2>
 
-  <p class="small">
-    Some moments deserve to stay forever.
-  </p>
+  <p class="small">Some moments deserve to stay forever.</p>
 
-  <div class="memories">
+  <!-- PAGE 1 -->
 
-    <div class="memory">
-      <img src="memory1.jpg" alt="Memory 1">
-      <p>Beautiful memories ❤️</p>
+  <div class="memory-page active" id="memoryPage1">
+
+    <div class="memories">
+
+      <div class="memory">
+        <img src="memory1.jpg" alt="Memory 1">
+        <p>Beautiful memories ❤️</p>
+      </div>
+
+      <div class="memory">
+        <img src="memory2.jpg" alt="Memory 2">
+        <p>Always special ✨</p>
+      </div>
+
+      <div class="memory">
+        <img src="memory3.jpg" alt="Memory 3">
+        <p>Never forget this! 🌸</p>
+      </div>
+
+      <div class="memory">
+        <img src="memory4.jpg" alt="Memory 4">
+        <p>More memories to come 💗</p>
+      </div>
+
     </div>
 
-    <div class="memory">
-      <img src="memory2.jpg" alt="Memory 2">
-      <p>Always special ✨</p>
-    </div>
+    <p class="page-indicator">Page 1 of 2</p>
 
-    <div class="memory">
-      <img src="memory3.jpg" alt="Memory 3">
-      <p>Never forget this! 🌸</p>
-    </div>
-
-    <div class="memory">
-      <img src="memory4.jpg" alt="Memory 4">
-      <p>More memories to come 💗</p>
+    <div class="page-buttons">
+      <button onclick="showMemoryPage(2)">
+        Next Page ➜
+      </button>
     </div>
 
   </div>
 
-  <button onclick="go(7)">
-    Keep going 💌
-  </button>
+
+  <!-- PAGE 2 -->
+
+  <div class="memory-page" id="memoryPage2">
+
+    <div class="memories">
+
+      <div class="memory">
+        <img src="memory5.jpg" alt="Memory 5">
+        <p>Another lovely moment 💕</p>
+      </div>
+
+      <div class="memory">
+        <img src="memory6.jpg" alt="Memory 6">
+        <p>Forever cherished 🌷</p>
+      </div>
+
+      <div class="memory">
+        <img src="memory7.jpg" alt="Memory 7">
+        <p>Smiles that last forever 😊</p>
+      </div>
+
+      <div class="memory">
+        <img src="memory8.jpg" alt="Memory 8">
+        <p>More adventures ahead! ❤️</p>
+      </div>
+
+    </div>
+
+    <p class="page-indicator">Page 2 of 2</p>
+
+    <div class="page-buttons">
+
+      <button onclick="showMemoryPage(1)">
+        ← Previous Page
+      </button>
+
+      <button onclick="go(7)">
+        Continue 💌
+      </button>
+
+    </div>
+
+  </div>
 
 </section>
 
@@ -576,9 +606,7 @@ button:active {
 
   </div>
 
-  <button onclick="go(8)">
-    One last surprise 💗
-  </button>
+  <button onclick="go(8)">One last surprise 💗</button>
 
 </section>
 
@@ -590,9 +618,7 @@ button:active {
   <h1>
     HAPPY<br>
     BIRTHDAY<br>
-    <span style="color:#ffd778" id="finalName">
-      Amulu!
-    </span>
+    <span style="color:#ffd778" id="finalName">Amulu!</span>
   </h1>
 
   <div class="teddy">🧸</div>
@@ -602,9 +628,7 @@ button:active {
     laughter and magic!
   </p>
 
-  <button onclick="celebrate()">
-    Celebrate again! 🎉
-  </button>
+  <button onclick="celebrate()">Celebrate again! 🎉</button>
 
 </section>
 
@@ -638,6 +662,10 @@ function go(number) {
 
   document.getElementById("s" + number).classList.add("active");
 
+  if(number === 6) {
+    showMemoryPage(1);
+  }
+
   if(number === 8) {
     celebrate();
   }
@@ -646,8 +674,24 @@ function go(number) {
 
 
 // ==================================
+// MEMORY PAGE NAVIGATION
+// ==================================
+
+function showMemoryPage(pageNumber) {
+
+  document.querySelectorAll(".memory-page").forEach(page => {
+    page.classList.remove("active");
+  });
+
+  document.getElementById("memoryPage" + pageNumber)
+    .classList.add("active");
+
+}
+
+
+// ==================================
 // BALLOON PHOTO DETAILS
-// CHANGE THE PHOTOS AND MESSAGES HERE
+// ADD YOUR 8 PHOTOS AND MESSAGES HERE
 // ==================================
 
 const balloonPhotos = [
@@ -665,6 +709,31 @@ const balloonPhotos = [
   {
     image: "balloon3.jpg",
     message: "You are truly special! 💗"
+  },
+
+  {
+    image: "balloon4.jpg",
+    message: "Keep smiling always! 😊"
+  },
+
+  {
+    image: "balloon5.jpg",
+    message: "A memory worth keeping! 💕"
+  },
+
+  {
+    image: "balloon6.jpg",
+    message: "You make life brighter! ✨"
+  },
+
+  {
+    image: "balloon7.jpg",
+    message: "Sending you endless happiness! 🌷"
+  },
+
+  {
+    image: "balloon8.jpg",
+    message: "One more special surprise for you! ❤️"
   }
 
 ];
@@ -675,20 +744,27 @@ let popupTimer;
 
 // ==================================
 // BALLOON POP FUNCTION
-// EACH PHOTO SHOWS FOR 10 SECONDS
+// EACH BALLOON HAS ITS OWN PHOTO
 // ==================================
 
-function pop(balloon) {
+function pop(balloon, photoIndex) {
 
   if(balloon.classList.contains("popped")) {
     return;
   }
 
+  // Prevent another balloon being popped
+  // while the current photo is visible.
+
+  if(document.getElementById("photoPopup").classList.contains("show")) {
+    return;
+  }
+
   balloon.classList.add("popped");
 
-  const photo = balloonPhotos[popped];
-
   popped++;
+
+  const photo = balloonPhotos[photoIndex];
 
   const popup = document.getElementById("photoPopup");
 
@@ -704,16 +780,18 @@ function pop(balloon) {
 
   clearTimeout(popupTimer);
 
+  // Show picture for 10 seconds
+
   popupTimer = setTimeout(() => {
 
     popup.classList.remove("show");
 
     popupImage.src = "";
 
-    if(popped === 3) {
+    if(popped === 8) {
 
       document.getElementById("balloonMessage").textContent =
-        "You popped all the balloons! 🎉";
+        "You popped all 8 balloons! 🎉";
 
       document.getElementById("memoryButton").style.display =
         "inline-block";
@@ -721,7 +799,7 @@ function pop(balloon) {
     } else {
 
       document.getElementById("balloonMessage").textContent =
-        `${3-popped} more surprise(s) waiting!`;
+        `${8-popped} more surprise(s) waiting!`;
 
     }
 
