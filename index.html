@@ -4,343 +4,287 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Birthday Surprise ❤️</title>
+<title>Happy Birthday Amulu ❤️</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Dancing+Script:wght@500;700&family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@300;400;500;600;700&display=swap');
 
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background: #17131c;
-  color: white;
   font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #fff0f5, #ffe0eb, #fff5f8);
+  color: #63364c;
+  min-height: 100vh;
   overflow-x: hidden;
+  text-align: center;
 }
 
 .screen {
   display: none;
   min-height: 100vh;
-  padding: 35px 22px;
-  text-align: center;
+  width: 100%;
+  padding: 35px 18px;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  position: relative;
-  overflow: hidden;
+  align-items: center;
+  animation: fadeIn 0.7s ease;
 }
 
 .screen.active {
   display: flex;
-  animation: appear .8s ease;
 }
 
-@keyframes appear {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 h1, h2 {
   font-family: 'DM Serif Display', serif;
+  margin-bottom: 18px;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 8vw, 3.5rem);
+  color: #c44575;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 6vw, 2.6rem);
+  color: #c44575;
 }
 
 p {
   line-height: 1.8;
+  font-size: 15px;
 }
 
 button {
   border: none;
   border-radius: 30px;
-  padding: 14px 28px;
-  margin-top: 25px;
-  background: #f05c88;
+  padding: 13px 27px;
+  background: #d94d83;
   color: white;
+  font-family: 'Poppins', sans-serif;
   font-size: 15px;
-  font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 5px 20px #0004;
-  transition: .3s;
+  margin: 12px 6px;
+  box-shadow: 0 5px 15px #d94d8340;
+  transition: transform 0.2s, background 0.2s;
 }
 
-button:active {
-  transform: scale(.94);
+button:hover {
+  transform: scale(1.05);
+  background: #bd326b;
 }
 
-.small {
-  font-size: 13px;
-  opacity: .8;
-}
-
-/* SCREEN 1 */
-
-#s1 {
-  background: #fffdf9;
-  color: #b44b66;
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .flower {
-  font-size: 65px;
-  margin: 30px;
-  animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-  50% { transform: translateY(-15px) rotate(10deg); }
-}
-
-/* SCREEN 2 */
-
-#s2 {
-  background: #e93666;
-}
-
-#s2 h1 {
-  font-size: 42px;
-  line-height: 1.5;
-}
-
-#s2 .yay {
-  color: #ffe56c;
-}
-
-/* SCREEN 3 */
-
-#s3 {
-  background: #fffdf9;
-  color: #bd435e;
-}
-
-#s3 h1 {
-  font-family: 'Dancing Script', cursive;
-  font-size: 45px;
-}
-
-.float {
-  position: absolute;
-  animation: float 5s ease-in-out infinite;
-  opacity: .7;
-  pointer-events: none;
+  font-size: 90px;
+  animation: float 3s ease-in-out infinite;
+  margin-bottom: 20px;
 }
 
 @keyframes float {
-  0%,100% { transform: translateY(0) rotate(0); }
-  50% { transform: translateY(-35px) rotate(20deg); }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
 }
 
-/* SCREEN 4 - CAKE */
-
-#s4 {
-  background: #17131c;
+.heart {
+  color: #e74d83;
+  font-size: 35px;
+  animation: heartbeat 1.2s infinite;
 }
 
-.cake {
-  font-size: 125px;
-  margin: 25px;
-  animation: cake 2s infinite ease-in-out;
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
 }
 
-@keyframes cake {
-  50% { transform: translateY(-10px) scale(1.04); }
+.card {
+  background: #ffffffc9;
+  border: 1px solid #ffffff;
+  border-radius: 22px;
+  padding: 25px;
+  width: min(100%, 520px);
+  box-shadow: 0 10px 35px #a64b6c18;
+  margin: 12px auto;
 }
 
-/* SCREEN 5 - BALLOONS */
-
-#s5 {
-  background: radial-gradient(circle, #34243d, #100d17);
+.subtitle {
+  max-width: 500px;
+  margin: 0 auto 20px;
 }
 
-.balloon-area {
+.small-note {
+  font-size: 13px;
+  opacity: 0.8;
+  margin-top: 12px;
+}
+
+/* BALLOONS */
+
+.balloon-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px 12px;
-  width: 100%;
-  max-width: 420px;
-  margin: 35px auto;
+  grid-template-columns: repeat(4, minmax(55px, 1fr));
+  gap: 18px;
+  width: min(100%, 430px);
+  margin: 25px auto;
 }
 
 .balloon {
-  font-size: 52px;
+  font-size: 48px;
   cursor: pointer;
-  display: inline-block;
-  animation: balloon 2s infinite ease-in-out;
-  transition: .3s;
+  animation: balloonFloat 2.5s ease-in-out infinite;
+  transition: transform 0.2s;
   user-select: none;
 }
 
-.balloon:active {
-  transform: scale(.2);
+.balloon:nth-child(even) {
+  animation-delay: 0.7s;
+}
+
+.balloon:hover {
+  transform: scale(1.2);
 }
 
 .balloon.popped {
   visibility: hidden;
+  pointer-events: none;
 }
 
-@keyframes balloon {
+@keyframes balloonFloat {
+  0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-12px); }
 }
 
-#balloonMessage {
-  color: #ffb5cf;
-  min-height: 50px;
+.progress {
+  width: min(100%, 300px);
+  height: 9px;
+  background: #f4c6d7;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 10px auto;
 }
 
-/* BALLOON PHOTO POPUP */
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: #d94d83;
+  transition: width 0.3s;
+}
 
-.photo-popup {
+/* BALLOON POPUP */
+
+.popup {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,.94);
-  z-index: 1000;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  z-index: 100;
+  background: #351526d9;
   padding: 20px;
-  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
-.photo-popup.show {
+.popup.show {
   display: flex;
-  animation: appear .4s ease;
 }
 
-.photo-popup img {
-  width: 90%;
-  max-width: 350px;
-  max-height: 65vh;
-  object-fit: contain;
-  border: 5px solid white;
+.popup-card {
+  width: min(100%, 390px);
+  background: white;
+  border-radius: 22px;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+.popup-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
   border-radius: 15px;
-  animation: photoZoom .6s ease;
 }
 
-.photo-popup p {
-  color: white;
-  font-family: 'Dancing Script', cursive;
-  font-size: 27px;
-  margin-top: 20px;
+.popup-card p {
+  margin-top: 14px;
+  color: #63364c;
 }
 
-.photo-popup span {
-  color: #ffb5cf;
-  margin-top: 10px;
-  font-size: 13px;
+.popup-timer {
+  font-size: 12px;
+  color: #a64b6c;
+  margin-top: 8px;
 }
 
-@keyframes photoZoom {
-  from { transform: scale(.5); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+/* MEMORY GALLERY */
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  width: min(100%, 520px);
+  margin: 20px auto;
 }
 
-/* SCREEN 6 - MEMORIES */
+.memory-item {
+  background: white;
+  padding: 8px;
+  border-radius: 15px;
+  box-shadow: 0 5px 18px #a64b6c20;
+}
 
-#s6 {
-  background: linear-gradient(150deg, #211726, #4a243c);
+.memory-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
 }
 
 .memory-page {
   display: none;
-  width: 100%;
-  max-width: 450px;
 }
 
 .memory-page.active {
   display: block;
-  animation: appear .6s ease;
+  animation: fadeIn 0.4s ease;
 }
 
-.memories {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-  width: 100%;
-  margin-top: 30px;
-}
-
-.memory {
-  background: #fff7e8;
-  color: #3d2832;
-  padding: 8px 8px 15px;
-  border-radius: 5px;
-  transform: rotate(-2deg);
-  box-shadow: 0 8px 25px #0005;
-}
-
-.memory:nth-child(even) {
-  transform: rotate(3deg);
-}
-
-.memory img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  background: #e8d7d8;
-  display: block;
-}
-
-.memory p {
-  font-family: 'Dancing Script', cursive;
-  font-size: 17px;
-  margin-top: 8px;
-}
-
-.page-indicator {
-  margin-top: 18px;
-  color: #ffb5cf;
+.page-label {
   font-size: 13px;
+  color: #a64b6c;
 }
 
-.page-buttons {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.page-buttons button {
-  margin-top: 20px;
-}
-
-/* SCREEN 7 - LETTER */
-
-#s7 {
-  background: #211b25;
-}
+/* LETTER */
 
 .letter {
-  background: #fff9e9;
-  color: #55434a;
-  padding: 30px 25px;
-  border-radius: 12px;
-  max-width: 450px;
-  width: 100%;
   text-align: left;
-  box-shadow: 0 10px 40px #0005;
-  transform: rotate(-1deg);
+  line-height: 2;
+  white-space: pre-line;
+  font-size: 15px;
 }
 
-.letter h2 {
-  font-family: 'Dancing Script', cursive;
-  color: #a94b66;
-  margin-bottom: 20px;
+.letter-title {
+  text-align: center;
 }
 
-/* SCREEN 8 - FINAL */
-
-#s8 {
-  background: radial-gradient(circle, #5c294a, #170e20);
-}
-
-#s8 h1 {
-  font-size: 45px;
-  line-height: 1.4;
-}
-
-/* FINAL EDITABLE PHOTO */
+/* FINAL PHOTO */
 
 .final-photo {
   width: 260px;
@@ -354,14 +298,21 @@ button:active {
   box-shadow: 0 8px 30px #0006;
 }
 
+.final-message {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
 /* CONFETTI */
 
 .confetti {
   position: fixed;
-  top: -20px;
+  top: -15px;
+  width: 9px;
+  height: 13px;
+  z-index: 200;
   pointer-events: none;
-  animation: fall linear forwards;
-  z-index: 2000;
+  animation: fall 4s linear forwards;
 }
 
 @keyframes fall {
@@ -371,27 +322,17 @@ button:active {
   }
 }
 
-@media(max-width:380px) {
-  #s2 h1, #s8 h1 { font-size: 36px; }
-
-  .balloon-area {
-    gap: 15px 8px;
-  }
-
-  .balloon {
-    font-size: 43px;
-  }
-
-  .memories {
-    gap: 10px;
-  }
-
-  .memory img {
-    height: 120px;
-  }
-
+@media (max-width: 380px) {
   .final-photo {
     height: 220px;
+  }
+
+  .memory-item img {
+    height: 145px;
+  }
+
+  .balloon-grid {
+    gap: 10px;
   }
 }
 </style>
@@ -401,457 +342,388 @@ button:active {
 
 <!-- SCREEN 1: OPENING -->
 
-<section class="screen active" id="s1">
-  <h2>Your birthday surprise starts here</h2>
+<section class="screen active" id="screen1">
   <div class="flower">🌸</div>
-  <p>Something special is waiting for you...</p>
-  <button onclick="go(2)">Open your surprise ❤️</button>
+  <h1>A Little Surprise...</h1>
+  <p class="subtitle">
+    Someone special has a birthday today.
+    And there's something waiting just for her.
+  </p>
+  <button onclick="goToScreen(2)">Open Your Surprise ❤️</button>
 </section>
-
 
 <!-- SCREEN 2: CELEBRATION -->
 
-<section class="screen" id="s2">
-  <h1>It's your birthday!<br>
-  <span class="yay">Yay!!! 🎉</span></h1>
-  <p>A whole day dedicated to you!</p>
-  <button onclick="go(3)">Let's celebrate ✨</button>
+<section class="screen" id="screen2">
+  <div class="heart">❤️</div>
+  <h1>It's Your Special Day!</h1>
+  <p class="subtitle">
+    A day full of happiness, laughter, beautiful memories
+    and countless reasons to smile.
+  </p>
+  <div style="font-size:65px; margin:15px;">🎂🎈🎉</div>
+  <button onclick="goToScreen(3)">Continue</button>
 </section>
 
+<!-- SCREEN 3: BIRTHDAY GREETING -->
 
-<!-- SCREEN 3: PERSONAL GREETING -->
-
-<section class="screen" id="s3">
-  <span class="float" style="top:10%;left:10%">💗</span>
-  <span class="float" style="top:25%;right:12%">✨</span>
-  <span class="float" style="bottom:20%;left:15%">🌷</span>
-
-  <p>Officially your day!</p>
-  <h1>Happy Birthday,<br><span id="name">Amulu</span>!</h1>
-  <p>Another year of being wonderfully you ❤️</p>
-  <button onclick="go(4)">Next surprise 💕</button>
+<section class="screen" id="screen3">
+  <div style="font-size:65px;">💐</div>
+  <h1>Happy Birthday, <span class="cousin-name">Amulu</span>!</h1>
+  <div class="card">
+    <p>
+      Today is all about celebrating you!
+      May your day be filled with smiles, surprises,
+      happiness and everything that makes you feel special.
+    </p>
+  </div>
+  <button onclick="goToScreen(4)">There's More! ✨</button>
 </section>
-
 
 <!-- SCREEN 4: CAKE -->
 
-<section class="screen" id="s4">
-  <h2>Cake first. Obviously. 🎂</h2>
-  <div class="cake">🎂</div>
-  <p>Make a wish. This moment is yours!</p>
-  <button onclick="go(5)">Next surprise 🎈</button>
+<section class="screen" id="screen4">
+  <h1>Make a Wish! 🎂</h1>
+  <div style="font-size:110px; margin:20px;">🎂</div>
+  <p>
+    Close your eyes, make a beautiful wish
+    and get ready for the next surprise!
+  </p>
+  <button onclick="goToScreen(5)">Let's Go! 🎈</button>
 </section>
 
+<!-- SCREEN 5: BALLOON SURPRISE -->
 
-<!-- SCREEN 5: EIGHT BALLOONS -->
-
-<section class="screen" id="s5">
-
-  <h2>Pop the balloons 🎈</h2>
-
-  <p class="small">
-    Tap all 8 balloons to reveal your surprises!
+<section class="screen" id="screen5">
+  <h2>Pop the Balloons!</h2>
+  <p class="subtitle">
+    Each balloon has a little surprise waiting for you.
+    Tap all 8 balloons to discover them!
   </p>
 
-  <div class="balloon-area">
-
-    <span class="balloon" onclick="pop(this,0)">🎈</span>
-    <span class="balloon" onclick="pop(this,1)">🎈</span>
-    <span class="balloon" onclick="pop(this,2)">🎈</span>
-    <span class="balloon" onclick="pop(this,3)">🎈</span>
-    <span class="balloon" onclick="pop(this,4)">🎈</span>
-    <span class="balloon" onclick="pop(this,5)">🎈</span>
-    <span class="balloon" onclick="pop(this,6)">🎈</span>
-    <span class="balloon" onclick="pop(this,7)">🎈</span>
-
+  <div class="progress">
+    <div class="progress-fill" id="balloonProgress"></div>
   </div>
 
-  <h3 id="balloonMessage">8 surprises are waiting!</h3>
+  <p id="balloonCount">0 of 8 surprises opened</p>
 
-  <button
-    id="memoryButton"
-    style="display:none"
-    onclick="go(6)">
-    Continue to Memories ❤️
+  <div class="balloon-grid" id="balloonGrid">
+    <div class="balloon" onclick="pop(this,0)">🎈</div>
+    <div class="balloon" onclick="pop(this,1)">🎈</div>
+    <div class="balloon" onclick="pop(this,2)">🎈</div>
+    <div class="balloon" onclick="pop(this,3)">🎈</div>
+    <div class="balloon" onclick="pop(this,4)">🎈</div>
+    <div class="balloon" onclick="pop(this,5)">🎈</div>
+    <div class="balloon" onclick="pop(this,6)">🎈</div>
+    <div class="balloon" onclick="pop(this,7)">🎈</div>
+  </div>
+
+  <p class="small-note">Every balloon has a different memory ❤️</p>
+
+  <button id="memoryButton" onclick="goToScreen(6)" disabled>
+    Continue to Memories
   </button>
-
 </section>
 
+<!-- BALLOON POPUP -->
 
-<!-- BALLOON PHOTO POPUP -->
-
-<div class="photo-popup" id="photoPopup">
-  <img id="popupImage" src="" alt="Birthday surprise">
-  <p id="popupMessage"></p>
-  <span>Your next surprise is waiting... ❤️</span>
+<div class="popup" id="balloonPopup">
+  <div class="popup-card">
+    <img id="balloonImage" src="" alt="Birthday surprise">
+    <p id="balloonMessage"></p>
+    <p class="popup-timer" id="popupTimer">
+      Enjoy this little surprise ❤️
+    </p>
+  </div>
 </div>
 
+<!-- SCREEN 6: MEMORY GALLERY -->
 
-<!-- SCREEN 6: MEMORIES - PAGE 1 -->
-
-<section class="screen" id="s6">
-
-  <h2>Little memories, big smiles 📸</h2>
-
-  <p class="small">Some moments deserve to stay forever.</p>
-
-  <!-- PAGE 1 -->
+<section class="screen" id="screen6">
+  <h2>Our Little Memories 📸</h2>
+  <p class="subtitle">
+    Some moments deserve to be remembered forever.
+  </p>
 
   <div class="memory-page active" id="memoryPage1">
-
-    <div class="memories">
-
-      <div class="memory">
-        <img src="memory1.jpg" alt="Memory 1">
-        <p>Beautiful memories ❤️</p>
+    <div class="memory-grid">
+      <div class="memory-item">
+        <img src="memory1.JPG" alt="Memory 1">
       </div>
-
-      <div class="memory">
-        <img src="memory2.jpg" alt="Memory 2">
-        <p>Always special ✨</p>
+      <div class="memory-item">
+        <img src="memory2.JPG" alt="Memory 2">
       </div>
-
-      <div class="memory">
-        <img src="memory3.jpg" alt="Memory 3">
-        <p>Never forget this! 🌸</p>
+      <div class="memory-item">
+        <img src="memory3.JPG" alt="Memory 3">
       </div>
-
-      <div class="memory">
-        <img src="memory4.jpg" alt="Memory 4">
-        <p>More memories to come 💗</p>
+      <div class="memory-item">
+        <img src="memory4.JPG" alt="Memory 4">
       </div>
-
     </div>
-
-    <p class="page-indicator">Page 1 of 2</p>
-
-    <div class="page-buttons">
-      <button onclick="showMemoryPage(2)">
-        Next Page ➜
-      </button>
-    </div>
-
+    <p class="page-label">Page 1 of 2</p>
   </div>
-
-
-  <!-- PAGE 2 -->
 
   <div class="memory-page" id="memoryPage2">
-
-    <div class="memories">
-
-      <div class="memory">
-        <img src="memory5.jpg" alt="Memory 5">
-        <p>Another lovely moment 💕</p>
+    <div class="memory-grid">
+      <div class="memory-item">
+        <img src="memory5.JPG" alt="Memory 5">
       </div>
-
-      <div class="memory">
-        <img src="memory6.jpg" alt="Memory 6">
-        <p>Forever cherished 🌷</p>
+      <div class="memory-item">
+        <img src="memory6.JPG" alt="Memory 6">
       </div>
-
-      <div class="memory">
-        <img src="memory7.jpg" alt="Memory 7">
-        <p>Smiles that last forever 😊</p>
+      <div class="memory-item">
+        <img src="memory7.JPG" alt="Memory 7">
       </div>
-
-      <div class="memory">
-        <img src="memory8.jpg" alt="Memory 8">
-        <p>More adventures ahead! ❤️</p>
+      <div class="memory-item">
+        <img src="memory8.JPG" alt="Memory 8">
       </div>
-
     </div>
-
-    <p class="page-indicator">Page 2 of 2</p>
-
-    <div class="page-buttons">
-
-      <button onclick="showMemoryPage(1)">
-        ← Previous Page
-      </button>
-
-      <button onclick="go(7)">
-        Continue 💌
-      </button>
-
-    </div>
-
+    <p class="page-label">Page 2 of 2</p>
   </div>
 
-</section>
-
-
-<!-- SCREEN 7: PERSONAL LETTER -->
-
-<section class="screen" id="s7">
-
-  <h2>Before this ends...</h2>
-
-  <br>
-
-  <div class="letter">
-
-    <h2 id="letterTitle">Dear Amulu,</h2>
-
-    <p>
-      I just want to wish you a beautiful birthday.
-
-      May your days be filled with happiness, laughter
-      and countless reasons to smile.
-
-      <br><br>
-
-      Keep being the wonderful person you are.
-
-      I hope this year brings you everything
-      your heart wishes for.
-
-      <br><br>
-
-      No matter how many birthdays pass,
-      you will always be special.
-
-      <br><br>
-
-      With lots of love,<br>
-      Your cousin ❤️
-    </p>
-
+  <div>
+    <button id="previousMemory" onclick="changeMemoryPage(-1)" style="display:none;">
+      ← Previous
+    </button>
+    <button id="nextMemory" onclick="changeMemoryPage(1)">
+      Next →
+    </button>
   </div>
 
-  <button onclick="go(8)">One last surprise 💗</button>
-
+  <button onclick="goToScreen(7)">Read Your Birthday Letter 💌</button>
 </section>
 
+<!-- SCREEN 7: BIRTHDAY LETTER -->
+
+<section class="screen" id="screen7">
+  <div style="font-size:55px;">💌</div>
+  <h2 class="letter-title">
+    A Little Letter for <span class="cousin-name">Amulu</span>
+  </h2>
+
+  <div class="card letter">
+    Dear <span class="cousin-name">Amulu</span>,
+
+    Wishing you the happiest birthday!
+
+    May this new year of your life bring you endless happiness,
+    beautiful opportunities, wonderful memories and lots of reasons
+    to smile.
+
+    Keep being the wonderful person you are.
+    Never stop laughing, dreaming and enjoying all the little
+    things that make life special.
+
+    May all your wishes come true and may every day ahead
+    bring something beautiful.
+
+    With lots of love and best wishes ❤️
+  </div>
+
+  <button onclick="goToScreen(8)">One Last Surprise 🎁</button>
+</section>
 
 <!-- SCREEN 8: FINAL CELEBRATION -->
 
-<section class="screen" id="s8">
+<section class="screen" id="screen8">
+  <div style="font-size:65px;">🎉🎊</div>
 
-  <h1>
-    HAPPY<br>
-    BIRTHDAY<br>
-    <span style="color:#ffd778" id="finalName">Amulu</span>
-  </h1>
+  <h1>Happy Birthday!</h1>
 
-  <!-- Change final.jpg to replace this photo -->
+  <h2 class="cousin-name">Amulu</h2>
+
+  <!-- FINAL PHOTO: REPLACE final.JPG IN GITHUB TO CHANGE THIS IMAGE -->
   <img
-    src="final.jpg"
+    src="final.JPG"
     alt="Amulu's birthday photo"
     class="final-photo"
+    id="finalPhoto"
   >
 
-  <p>
-    May your life always be filled with love,
-    laughter and magic!
-  </p>
+  <div class="final-message">
+    <p>
+      May your smile always stay bright,
+      your heart always stay happy,
+      and your life always be filled with beautiful moments.
+    </p>
 
-  <button onclick="celebrate()">Celebrate again! 🎉</button>
+    <p style="margin-top:15px;">
+      Once again, Happy Birthday! ❤️
+    </p>
+  </div>
 
+  <div style="font-size:40px; margin-top:20px;">
+    🎂 ❤️ 🎈
+  </div>
 </section>
-
 
 <script>
 
-// ==================================
-// PERSONAL DETAILS
-// ==================================
+/* CHANGE THE NAME HERE */
 
 const cousinName = "Amulu";
 
-document.getElementById("name").textContent = cousinName;
+document.querySelectorAll(".cousin-name").forEach(element => {
+  element.textContent = cousinName;
+});
 
-document.getElementById("letterTitle").textContent =
-  "Dear " + cousinName + ",";
+/* SCREEN NAVIGATION */
 
-document.getElementById("finalName").textContent =
-  cousinName;
-
-
-// ==================================
-// SCREEN NAVIGATION
-// ==================================
-
-function go(number) {
-
+function goToScreen(number) {
   document.querySelectorAll(".screen").forEach(screen => {
     screen.classList.remove("active");
   });
 
-  document.getElementById("s" + number).classList.add("active");
+  document.getElementById("screen" + number).classList.add("active");
 
-  if(number === 6) {
-    showMemoryPage(1);
+  window.scrollTo({ top: 0, behavior: "smooth" });
+
+  if (number === 8) {
+    startConfetti();
   }
-
-  if(number === 8) {
-    celebrate();
-  }
-
 }
 
-
-// ==================================
-// MEMORY PAGE NAVIGATION
-// ==================================
-
-function showMemoryPage(pageNumber) {
-
-  document.querySelectorAll(".memory-page").forEach(page => {
-    page.classList.remove("active");
-  });
-
-  document.getElementById("memoryPage" + pageNumber)
-    .classList.add("active");
-
-}
-
-
-// ==================================
-// BALLOON PHOTO DETAILS
-// ADD YOUR 8 PHOTOS AND MESSAGES HERE
-// ==================================
+/* BALLOON PHOTOS - ALL EXTENSIONS ARE .JPG */
 
 const balloonPhotos = [
-
-  {
-    image: "balloon1.jpg",
-    message: "A little memory just for you! ❤️"
-  },
-
-  {
-    image: "balloon2.jpg",
-    message: "Another beautiful moment! 🌸"
-  },
-
-  {
-    image: "balloon3.jpg",
-    message: "You are truly special! 💗"
-  },
-
-  {
-    image: "balloon4.jpg",
-    message: "Keep smiling always! 😊"
-  },
-
-  {
-    image: "balloon5.jpg",
-    message: "A memory worth keeping! 💕"
-  },
-
-  {
-    image: "balloon6.jpg",
-    message: "You make life brighter! ✨"
-  },
-
-  {
-    image: "balloon7.jpg",
-    message: "Sending you endless happiness! 🌷"
-  },
-
-  {
-    image: "balloon8.jpg",
-    message: "One more special surprise for you! ❤️"
-  }
-
+  "balloon1.JPG",
+  "balloon2.JPG",
+  "balloon3.JPG",
+  "balloon4.JPG",
+  "balloon5.JPG",
+  "balloon6.JPG",
+  "balloon7.JPG",
+  "balloon8.JPG"
 ];
 
-let popped = 0;
-let popupTimer;
+const balloonMessages = [
+  "A beautiful memory worth keeping forever! ❤️",
+  "Some moments make life extra special. 💕",
+  "A little reminder of all the happiness! 🌸",
+  "May you always have reasons to smile! 😊",
+  "More memories, more laughter, more happiness! ✨",
+  "The best moments are the ones we remember. 💗",
+  "Keep shining and spreading happiness! 🌷",
+  "Here's to many more beautiful memories! 🎉"
+];
 
+let poppedCount = 0;
+let popupBusy = false;
+let popupInterval = null;
+let popupTimeout = null;
 
-// ==================================
-// BALLOON POP FUNCTION
-// EACH BALLOON HAS ITS OWN PHOTO
-// ==================================
-
-function pop(balloon, photoIndex) {
-
-  if(balloon.classList.contains("popped")) {
+function pop(balloon, index) {
+  if (popupBusy || balloon.classList.contains("popped")) {
     return;
   }
 
-  if(document.getElementById("photoPopup").classList.contains("show")) {
-    return;
-  }
-
+  popupBusy = true;
   balloon.classList.add("popped");
 
-  popped++;
+  poppedCount++;
 
-  const photo = balloonPhotos[photoIndex];
+  document.getElementById("balloonCount").textContent =
+    poppedCount + " of 8 surprises opened";
 
-  const popup = document.getElementById("photoPopup");
+  document.getElementById("balloonProgress").style.width =
+    (poppedCount / 8 * 100) + "%";
 
-  const popupImage = document.getElementById("popupImage");
+  document.getElementById("balloonImage").src =
+    balloonPhotos[index];
 
-  const popupMessage = document.getElementById("popupMessage");
+  document.getElementById("balloonMessage").textContent =
+    balloonMessages[index];
 
-  popupImage.src = photo.image;
-
-  popupMessage.textContent = photo.message;
+  const popup = document.getElementById("balloonPopup");
+  const timerText = document.getElementById("popupTimer");
 
   popup.classList.add("show");
 
-  clearTimeout(popupTimer);
+  let remaining = 10;
 
-  popupTimer = setTimeout(() => {
+  timerText.textContent =
+    "Surprise closes in " + remaining + " seconds";
 
-    popup.classList.remove("show");
+  clearInterval(popupInterval);
+  clearTimeout(popupTimeout);
 
-    popupImage.src = "";
+  popupInterval = setInterval(() => {
+    remaining--;
 
-    if(popped === 8) {
-
-      document.getElementById("balloonMessage").textContent =
-        "You popped all 8 balloons! 🎉";
-
-      document.getElementById("memoryButton").style.display =
-        "inline-block";
-
-    } else {
-
-      document.getElementById("balloonMessage").textContent =
-        `${8-popped} more surprise(s) waiting!`;
-
+    if (remaining > 0) {
+      timerText.textContent =
+        "Surprise closes in " + remaining + " seconds";
     }
+  }, 1000);
 
+  popupTimeout = setTimeout(() => {
+    popup.classList.remove("show");
+    clearInterval(popupInterval);
+    popupBusy = false;
+
+    if (poppedCount === 8) {
+      document.getElementById("memoryButton").disabled = false;
+      document.getElementById("memoryButton").textContent =
+        "All surprises opened! Continue ❤️";
+    }
   }, 10000);
-
 }
 
+/* MEMORY PAGE NAVIGATION */
 
-// ==================================
-// CONFETTI CELEBRATION
-// ==================================
+let currentMemoryPage = 1;
 
-function celebrate() {
+function changeMemoryPage(direction) {
+  currentMemoryPage += direction;
 
-  const symbols = ["🎉", "💗", "✨", "🌸", "🎊", "💕"];
+  if (currentMemoryPage < 1) {
+    currentMemoryPage = 1;
+  }
 
-  for(let i = 0; i < 65; i++) {
+  if (currentMemoryPage > 2) {
+    currentMemoryPage = 2;
+  }
 
-    let piece = document.createElement("div");
+  document.getElementById("memoryPage1").classList.toggle(
+    "active", currentMemoryPage === 1
+  );
 
+  document.getElementById("memoryPage2").classList.toggle(
+    "active", currentMemoryPage === 2
+  );
+
+  document.getElementById("previousMemory").style.display =
+    currentMemoryPage === 1 ? "none" : "inline-block";
+
+  document.getElementById("nextMemory").style.display =
+    currentMemoryPage === 2 ? "none" : "inline-block";
+}
+
+/* CONFETTI */
+
+function startConfetti() {
+  for (let i = 0; i < 90; i++) {
+    const piece = document.createElement("div");
     piece.className = "confetti";
 
-    piece.textContent =
-      symbols[Math.floor(Math.random()*symbols.length)];
+    piece.style.left = Math.random() * 100 + "vw";
 
-    piece.style.left = Math.random()*100 + "vw";
+    piece.style.backgroundColor =
+      ["#ff4f91", "#ffd166", "#9b5de5", "#00bbf9",
+       "#f15bb5", "#06d6a0"][Math.floor(Math.random() * 6)];
 
     piece.style.animationDuration =
-      (2 + Math.random()*3) + "s";
+      (2 + Math.random() * 3) + "s";
 
-    piece.style.fontSize =
-      (12 + Math.random()*18) + "px";
+    piece.style.animationDelay =
+      (Math.random() * 1.5) + "s";
 
     document.body.appendChild(piece);
 
-    setTimeout(() => piece.remove(), 5500);
-
+    setTimeout(() => {
+      piece.remove();
+    }, 6000);
   }
-
 }
 
 </script>
